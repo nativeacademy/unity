@@ -1,0 +1,82 @@
+コミュニケーションシート対応４日目
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問１
+	Projectビューで表示されている「フォルダ」は
+	どうやって作成するのですか？
+	
+回答
+	Projectビューの左上にある「Create」ボタンを押すと
+	出てくるメニューの一番上にあります。
+	
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問２
+	GetMouseButtonDown() と同じような動作の検出は、
+	キーボードにもあるのでしょうか。
+
+回答
+	キーボードはマウスと違って「移動中」はありませんが、
+	初めて押された、初めて離したは検出できます。
+	詳しくはInputクラスのリファレンスをご覧ください。
+
+		GetKey()
+			特定のキーネームから情報を取得する。
+			押している間、trueを返す。  
+		GetKeyDown()
+			特定のキーネームから情報を取得する。
+			押された瞬間、trueを返す。  
+		GetKeyUp()
+			特定のキーネームから情報を取得する。
+			ボタンから指を離したとき、trueを返す。  
+
+	http://docs-jp.unity3d.com/Documentation/ScriptReference/Input.html
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問３
+	Unityで使用している物理エンジンはUnity専用のもの
+	でしょうか？それとも既存で公開されているもので
+	しょうか？
+
+回答
+	UnityはnVIDIAの「PhysX」エンジンを内蔵しています。
+	詳しくは以下のサイトをご覧ください。
+
+	■Unity - Physicsの紹介
+		http://docs-jp.unity3d.com/Documentation/Manual/Physics.html
+
+	■nVIDIA - PhysXの紹介
+		http://www.nvidia.co.jp/object/physx_new_jp.html
+
+	■nVIDIA - PhysXのFAQ
+		http://www.nvidia.co.jp/object/physx_faq_jp.html
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問４
+	物理エンジンは毎回異なる動きをするもの？
+	（たとえば、パズルゲームにおいて緑のブロックが
+	　実行するたびに異なる方向に倒れていくことがある）
+	
+回答
+	恐らくデフォルトのPyhsic Materialと計算誤差(精度)
+	によるものだと思います。
+	あと、GPUと物理演算は独立しているのですが、元が
+	nVIDIAが提供しているものなのでnVIDIAのグラフィック
+	ボードにおいては最高の性能を出してくれると思います。
+
+	■nVIDIA - PhysXのFAQ
+		http://www.nvidia.co.jp/object/physx_faq_jp.html
+	
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問５
+	物理エンジンによっては、正確な挙動を示す物理世界の大きさが
+	限定されていることがありますが、Unityではそのような範囲は
+	ありますか？
+
+	Unityの物理世界はほとんどがSI単位系（メートル、秒、キログラム）
+	のように感じるのですが、そのような認識でよろしいでしょうか？
+
+回答
+	完全にまとまってはいませんが、ご質問のお答えになりそうな
+	情報は以下のサイトにあります。
+	
+	http://docs-jp.unity3d.com/Documentation/Components/class-Rigidbody.html
+

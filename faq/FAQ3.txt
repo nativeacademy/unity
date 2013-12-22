@@ -1,0 +1,118 @@
+質問１
+　平行ビューのゲームは作れますか？
+
+回答１
+　できます。
+
+　１．Unity4.3からは正式に2Dをサポートしました。
+　　　そちらを使うと比較的楽にできるはず（出たばかりで情報が少ないけど）
+
+　２．元々Unity4.2以前でも並行ビューは作れます。
+　　　Cameraコンポーネント(Main Cameraについている)の「Projection」を
+　　　「Projection」から「Orthographics」に変更し、Sizeを100から1とか2など
+　　　比較的小さい変えてください。
+
+質問２
+　UnityやOculusのイベントとかfacebookグループとか情報があったら知りたいです
+
+回答２
+　コミュニティ
+　　 ・Unity - forum(英語)
+        http://forum.unity3d.com/forum.php
+     ・Unityユーザー助け合い所　（Facebook）（日本語）
+        http://www.facebook.com/groups/unityuserj/
+     ・Oculus Game Jam in Japan
+        https://www.facebook.com/groups/221760641327131/
+     ・VR Japan
+        https://www.facebook.com/groups/182991845214377/
+     ・Tokyo Motioncontrol Network
+        https://www.facebook.com/TokyoMotioncontrolNetwork
+
+
+質問３
+Terrainは重い？
+
+回答３
+相対評価になりますが、重たいですね。
+したがって、軽くするためのノウハウとして
+　・サイズを小さくする
+　・キメ(頂点数)を荒くする
+　・Fogの密度と開始距離、およびCameraのFar(どれだけ離れたところから表示するのか)
+　・テクスチャのサイズを小さくする(その分、荒くなる)
+など画像の品質(Quality)を落とすとよいでしょう。
+それでもスマフォはメモリが足りないので厳しいですね。
+
+質問４
+　・Mecanimで実際に別のキャラクターのモーションをインポートする方法は？
+　・fbxのデータに他のfbxのanimationの取り込む方法は？
+
+回答４
+　青紫本のP.260以降を参照
+
+質問５
+　・よく使うなゲームの基本的テクニックを知りたいです。
+  ・AssetStore以外に何かご存知のサイトがあれば教えて欲しいです。
+
+回答５
+  私もそのつど調査中。
+  比較的色々と情報源のまとめたサイトがあるのでここを基点にするとよいでしょう。
+    http://trycalco.blogspot.jp/2013/04/Unity3dLinks.html
+
+質問６
+　TerrainのHeightmapの情報は自動でHeaderに保存されるのでしょうか。
+
+回答６
+　TerrainのHeightmapはRawデータなのでヘッダ情報はありません。
+
+質問７
+　キャラクターのアニメーション部分でエラーが出て、
+　何かの設定しわすれだと思うが原因がわからなかった。
+
+回答７
+　研修のとき、たまに発声するのですが再現方法がわからないため原因不明です。
+　再現方法がわかったら教えてください。
+
+質問８
+　キューブやシリンダーの角を、任意の数値分丸めることは可能でしょうか。
+
+回答８
+　Unityの基本機能では不可能です。しかし、Unityを機能拡張するプラグインと組み合わせるとできるみたいです
+  ・AssetStore - [Editor Extensions/Modeling]を参照
+
+　一般的には3Dモデルツールを使います。そちらの方が確実です。
+　しかし、私は使えません。
+
+質問９
+　パズルゲームを作成する際のノウハウは？
+
+回答９
+　Unityの機能を最前面に使う方法も良いのですが、普通に２次元配列でGameObjectを
+　管理するほうがよいかもしれません。
+　かなり難しいですが、紫本にいくつかパズルゲームがあるので参照してください。
+　あと、facebookにテトリスの作りかけがありました(解読が大変でかつバグっている&Unity4.3用)。
+
+質問１０
+　アニメーションはスマホでも問題なく表示できるのか？
+
+回答１０
+　スマフォの処理能力は皆さんが思っている以上に低いです。
+　そのため、1画面あたりの総ポリゴン数を減らしたり、テクスチャサイズを小さくしたり、
+　アルファブレンドを極力しないようにするかかなり工夫する（半透明処理は重たい）、
+　などのテクニックが必要です。
+
+  そのほかのヒントは公式サイトのユーザーマニュアルをご覧ください。
+　http://docs-jp.unity3d.com/Documentation/Manual/iphone-PracticalGuide.html
+
+　あと1年前の資料ですが、スマフォ向けFPSの「ShadowGun」のサンプルレベルプロジェクト
+　とそのノウハウが公開されています。
+　残念ながらMac OS XのUnityを利用しないとうまく開けないのと、英語です。
+　
+　http://blogs.unity3d.com/2012/03/23/shadowgun-optimizing-for-mobile-sample-level/
+
+質問１１
+unityでwebviewの使い方が知りたいです
+
+回答１１
+標準機能はありませんが、AssetStoreを探すと出てきます。
+あと参考ですが、FlashのActionScriptをコンバートするLWFがオープンソースで公開されています。
+http://labs.gree.jp/blog/category/lwf/

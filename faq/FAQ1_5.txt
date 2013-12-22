@@ -1,0 +1,107 @@
+コミュニケーションシート対応7日目
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問１：
+	スマフォのNativeアプリケーションにおける
+	ライフサイクルとの連動方法は？
+
+解答：
+	Android：
+		UnityPlayerActivity.javaという名前でメインのActivityは公開されています。
+		これとAndroidManifest.xmlをカスタマイズ可能
+		参照：http://docs-jp.unity3d.com/Documentation/Manual/PluginsForAndroid.html
+	iPhone:
+		未公開？
+		UnityでiOS向けのビルドを行うと、Xcodeの
+		プロジェクトファイルを生成します。
+		そのソースを元に、iOS側からC#/JavaScript
+		を呼び出すことはできます。
+		参照：http://docs-jp.unity3d.com/Documentation/Manual/PluginsForIOS.html
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問２：
+	C#におけるnamespaceは使えますか？
+
+回答：
+	使えます(Unity4から?)。
+	これまでのサンプルは単に使っていなかった
+	だけです。
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問３：
+	GameControllerのようなクラスは絶対に必要？
+	クラスやGameObjectが増えてくると呼び出し順番が気になります。
+	
+回答：
+	全てのゲームにおいて絶対に必要という
+	訳ではないと思いますが、間違いなく
+	全体を制御するためのクラスは必要
+	だと思います。
+	
+	参考までにMonoBehaviourのライフサイクルを
+	示します（ただし、バージョンUnity3.x系）
+
+	参考：MonoBehaviourのライフサイクル。
+	http://www.richardfine.co.uk/2012/10/unity3d-monobehaviour-lifecycle/
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問４：
+	Cubeなどを上下に移動させるアニメーションを
+	つけて、その上にキャラクターを乗せると、
+	上に移動したときにキャラクターが突き抜けて
+	しまいます。何か解決策はありませんか？
+	
+回答：
+	すみません。簡単に解決することができませんでした。
+	代わりにUnity標準パッケージを利用することで床処理も完璧になります。
+	（スクリプトが思った以上に複雑でポイントが絞れませんでした）
+	
+	1. [Assets]-[Import Package]-[Charactor Contoller]をインポート
+	2. HierarchyのPlayerにしたいGameObjectを選択
+	3. [Component]-[Charactor]-[Platform Input Controller]
+	4. 
+	
+	参考：
+		http://docs-jp.unity3d.com/Documentation/Components/class-CharacterController.html
+		http://gamesonytablet.blogspot.jp/2012/12/unitycharacter-controller.html
+		http://ws.cis.sojo-u.ac.jp/~izumi/Unity_Documentation_jp/Documentation/3DPlatformTutorial_jp.pdf
+		http://ikomiki.sblo.jp/article/46471972.html
+		
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問５：
+	現在表示中の解像度の取得方法
+
+回答：
+	Screenクラスに情報があります。
+		Screen.width：幅
+		Screen.height：高さ
+	
+	Tips: 解像度非依存
+
+    void OnGUI(){
+    	// 仮想的に640x480(4:3)をベースとして、
+    	// 現在のスクリーンサイズに合わて
+    	// 自動的に拡大縮小する
+        GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity,
+			new Vector3(Screen.width / 640.0f, Screen.height / 480.0f, 1.0f));
+
+				：
+				：
+				：
+				
+        // 元に戻す(念のため)
+		GUI.matrix = Matrix4x4.identity;
+    }
+	
+
+	参考：
+		http://ws.cis.sojo-u.ac.jp/~izumi/Unity_Documentation_jp/Documentation/3DPlatformTutorial_jp.pdf
+		↑ P.55～56参照(JavaScriptからC#に読み替えました)
+		http://docs-jp.unity3d.com/Documentation/ScriptReference/Screen.html
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問６：
+	Unityで[File]-[Build setting...]を実行し、WebPlayerを選択すると
+	何が出力されるのでしょうか？
+
+回答：
+	htmlファイルとWebPlayer向けのゲームファイルです。
+	オフライン版を生成すると、JavaScriptも合わせて生成します。

@@ -1,0 +1,48 @@
+﻿コミュニケーションシート対応１０日目
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問１
+	『○秒間処理を実行し続ける』のサンプルコードを
+	お願いします。
+
+回答
+	一例ですが「TimeSample.zip」にまとめました。
+	画面に表示されているオブジェクトはダミーです。
+	画面をマウスでクリックすると、consoleにログが
+	5秒間出ます。
+	処理のポイントを以下に示します。
+		・マウスクリックすると「stayClick」をtrueにする
+		・expireTimeにTime.time(現在時刻) + 5を代入
+		・stayClick == trueのとき、Time.timeがexpireTime
+		　より小さいときはログ出力
+		・stayClick == trueのとき、Time.timeがexpireTime
+		　より大きいときはstayClickにfalseを代入して終了
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+using UnityEngine;
+using System.Collections;
+
+public class TimeSample : MonoBehaviour {
+	
+	private bool stayClick;
+	private float expireTime;
+
+	// Use this for initialization
+	void Start () {
+		stayClick = false;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (stayClick == false) {
+			if (Input.GetMouseButtonDown(0)) {
+				stayClick = true;
+				expireTime = Time.time + 5;
+			}
+		} else {
+			Debug.Log ("Time.time=" + Time.time + " expireTime=" + expireTime);
+			if (Time.time > expireTime) {
+				stayClick = false;
+			}
+		}
+	}
+}

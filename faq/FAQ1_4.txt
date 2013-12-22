@@ -1,0 +1,81 @@
+コミュニケーションシート対応6日目
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問1：
+	Animator ControllerにおけるSub Layerと
+	Base Layerの関係について教えてください。
+
+回答：
+	Animator Controllerは複数のレイヤをブレンド
+	（合成）したアニメーションを表示ます。
+	テキストの例の初期ステータスは、
+		Base Layer: Idle
+		Sub Layer : SpineRoll
+	これをP.265のスクリプトにあるように、
+	80%の割合でブレンドしたものを表示しています。
+	Sub Layerは初期状態しかありませんが、もし
+	Sub Layerにも状態遷移が有り、さらに状態ごとに
+	アニメーションが用意されていたら、そのアニ
+	メーションとBase Layerにおけるその時のアニ
+	メーションがブレンドされて表示されます。
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+質問２：
+	Animator Controllerにおいて、複数のアニメを
+	同時制御することはできるか？
+
+回答：
+	Animator Controllerでは「状態管理」とそれに
+	伴ったアニメの再生ができます。その機能の範囲
+	であればできるとは思います。
+	あるいはBrend Treeで調整するとかするとよいかも
+	しれません。
+	
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問３：
+	マウスのクリック位置（２次元座標系）を
+	カメラで見ているオブジェクト（３次元座標系）に
+	変換するには？
+
+	また、Terrainの上のGameObjectを配置する
+	ために座標を知りたい。
+	
+回答：
+	マウスのクリック位置を変換するには、「紫本」の
+	以下の章にて解説しています。
+		概要：第２章（P.105)
+		詳細：第１０章（P.391～397)
+	
+	TerrainをクリックしたところにGameObjectを
+	配置するには以下のようにします。
+
+		１．Terrainを選択する
+		２．シーンViewにて適当な場所に移動する
+		３．シーンViewにてFキーを押す
+		４．この時の座標をメモするか、
+			新たにGameObjectをCreateまたは配置する
+		５．するとクリックした位置に配置される
+		６．ただし、高さ(Y)が合っていないので
+			Inspectorで直接値を代入するか、
+			Wキーを押して「移動」モードにしてから
+			移動させる
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問４：
+	Joypadにおいて「TouchPad」のチェックをONにすると
+	ボタンの表示が薄くなるのはどこで実現していますか？
+	
+回答：
+	Joystick.jsのResetJoystick()です。
+	
+function ResetJoystick()
+{
+	// Release the finger control and set the joystick back to the default position
+	gui.pixelInset = defaultRect;
+	lastFingerId = -1;
+	position = Vector2.zero;
+	fingerDownPos = Vector2.zero;
+	
+	if ( touchPad )
+		gui.color.a = 0.025;	
+}
+

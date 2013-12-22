@@ -1,0 +1,54 @@
+コミュニケーションシート対応２日目
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問１
+	3Dモデルに独自の機能を追加するには、スクリプトで
+	行うのでしょうか？
+	
+	また、デモにあったような銃を撃つアニメーションは？
+
+回答
+	その通りです。
+	正確には、
+		・3Dモデルにアニメーションが定義されており、
+		　それをスクリプトで再生する方法
+		　（今回の例の場合、3D Person Character)
+		・純粋にスクリプトで移動、回転、拡大/縮小
+		　などの動きを行う
+		　（今回の例の場合、Coin）
+		・AnimationコンポーネントやAnimator Controller
+		　などの機能を使って制御する
+		　（白青本のChapter 07）
+	などがあります。
+	
+	銃を撃つアニメーションは、キャラクタのアニメーションは
+	3Dモデルソフトで作成できますが、弾の軌跡や移動について
+	はUnityの機能を使って実装します（スクリプトで行うか、
+	既存コンポーネントを使うかは状況次第）
+
+==================================================
+質問２
+	～.SendMessage(""メソッド名"", 実引数) は
+	C#の仕様に含まれているものでしょうか？
+
+回答
+	違います。
+	SendMessage()はBehaviourクラスが持っているメソッドです。
+	
+	Component
+	+- Behaviour
+	   +- MonoBehaviour
+	という継承関係になっています。
+
+	詳しくはUnityのオンラインドキュメントをご覧ください。
+	http://docs-jp.unity3d.com/Documentation/ScriptReference/Component.html
+	http://docs-jp.unity3d.com/Documentation/ScriptReference/Behaviour.html
+	http://docs-jp.unity3d.com/Documentation/ScriptReference/MonoBehaviour.html
+
+==================================================
+質問３
+	スパイクボールなどのサイズの調整を数字を直接入力
+	するのではなく、マウス操作で変更するには？
+	
+回答
+	PPTスライドのP.46をご覧ください。

@@ -1,0 +1,215 @@
+コミュニケーションシート対応8日目
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問１
+	紫本のP.40-41において、重力加速度を修正する
+	ことで「フワフワ感」が補正できる理由がよく
+	わかりません。
+	白青本(入門テキスト)において、2トンもの重量
+	があった自動車が浮き上がったりしていたはず
+	ですが、他の何かをシミュレーションしていま
+	すか？
+	
+回答
+	P.40-41において設定した項目は以下のリファレンスにある「重力」の設定を行いました。
+
+	■Physics.gravity
+	　http://docs-jp.unity3d.com/Documentation/ScriptReference/Physics-gravity.html
+
+	説明を見てわかりますように、staticプロパティ
+	となっており、すべての物理演算の重力に影響
+	します。
+	今回はDrag(空気抵抗の量)を0としているため、
+	純粋に重力の設定に従って物体が下に引かれて
+	いきます。
+	
+	参考
+		■青白本のP.106(Rigidbody)とP.107(Physic Material)の項目
+		■Unity公式サイトのマニュアル
+			・Rigidbody
+			　http://docs-jp.unity3d.com/Documentation/Components/class-Rigidbody.html
+			・Physic Material
+	　		　http://docs-jp.unity3d.com/Documentation/Components/class-PhysicMaterial.html
+	　		・Physicのまとめ
+	　		　http://docs-jp.unity3d.com/Documentation/Manual/Physics.html
+
+	車のモデルは「Wheel Collider」というものを使用しました。
+	細かい説明は白青本およびUnityの公式サイトに譲りますが、このコライダは単なる
+	当たり反対だけではなく、組み込み衝突検出、ホイール物理特性、スリップベースの
+	タイヤ摩擦モデルを含みます(Unity公式サイトのマニュアルより)。
+	そして、「フワッ」と浮き上がったような動きをしているのは「サスペンション」
+	をシミュレーションしているためです。
+
+	参考
+		■青白本のP.187-189参照
+		■Unity公式サイトのマニュアル
+			・Wheel Collider
+			http://docs-jp.unity3d.com/Documentation/Components/class-WheelCollider.html
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+質問２
+	C#スクリプトから、JSで書かれたスクリプト
+	を利用する方法を具体的に知りたい。
+	
+	
+回答
+	白青本のP.276にヒントが掲載されています。それ以外は特に注意すべきところはなく、
+	普通のクラスと同じように扱えます。
+	以下にInputState.csからJoystic.jsを参照しているところを抜粋します。
+	
+using UnityEngine;
+using System.Collections;
+
+public class InputState : MonoBehaviour {
+	
+	public static float h;
+	public static float v;
+	public static bool isJump;
+	public static bool isSliding;
+	
+	Joystick direction;
+	Joystick jump;
+	Joystick slide;
+	bool mobile = false;
+	
+	void Start () {
+		GameObject directionObject = GameObject.Find("Joystick");
+		GameObject jumpObject = GameObject.Find("ButtonJump");
+		GameObject slideObject = GameObject.Find("ButtonSliding");
+		if (Application.platform == RuntimePlatform.IPhonePlayer
+			|| Application.platform == RuntimePlatform.Android) {
+
+			mobile =  true;
+			direction = directionObject.GetComponent<Joystick>();
+			jump = jumpObject.GetComponent<Joystick>();
+			slide = slideObject.GetComponent<Joystick>();
+		} else {
+			directionObject.SetActive(false);
+			jumpObject.SetActive(false);
+			slideObject.SetActive(false);
+		}
+	}
+	
+	＜＜＜以下省略＞＞＞
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+質問３
+	トレジャーガールの移動において、ジャンプの
+	最高到達点を制限したい。
+	
+回答
+	今回の例では物理演算を用いずに自前で自由落下処理を組み込んでいます。
+	そのため、ジャンプ時の最高到達点を制限したい場合は、その値を参照した上で、
+	自分が設定したい最高到達点から、初速度(今回のプログラムではjumpSpeed=8f)と
+	滞在時間(未定義)を決めると出来ると思います。
+	（ここまで来ると高校物理の教科書が必要なレベルですね）
+	
+	参考
+		■Unity公式サイトのマニュアル
+			・Character Controller
+			　http://docs-jp.unity3d.com/Documentation/Components/class-CharacterController.html									
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+質問４
+	やりたいことを実現する方法がすぐに思いつかない、分からない
+
+回答
+	講師およびサブ講師に聞いてください。
+	ただ、漠然と「楽しいゲームを作りたい」ではこちらも回答に困って
+	しまいますので、
+		・何をしたいのか？
+		・ためしにやってみたら、「＊＊＊＊」となってしまってうまくいかない
+		・解決策はありますか？
+	みたいな流れになるととても助かります。
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問５
+	サンプルコードに記載されているクラス／関数／変数等が、自作なのかライブラリなのか、
+	何らかのコールバック関数なのか等、区別がついていないため解析に時間がかかる
+
+回答
+	仰るように自作コールバックメソッドに関しては、きちっとソースコードを調べるか
+	コメントがないと分かりづらいですね（C#で普通に開発しているときにも同じことを
+	思いました）
+	
+	それから基本ルールとして
+		・メソッドは大文字から始まる（通常メソッドやstaticメソッドなど）
+		 （MonoBehaviourのprint()メソッドだけが例外と思われます）
+		・以下のコールバックメソッド「以外」は「On」から始まる
+			Awake       スクリプトのインスタンスがロードされたときに呼び出され る。
+			Start       Update関数が呼び出される直前に一度だけ呼び出される
+			Update      毎フレーム呼び出される。
+			FixedUpdate フレームに依存せず、一定の間隔で呼び出される。
+			LateUpdate  毎フレーム呼び出される。
+			Reset       値をデフォルトにリセットする。
+		・プロパティは小文字から始まる
+	となっています。
+	
+	この命名規則は通常のC#と同じですので、恐らくUnityの基本ライブラリがどれなのか
+	区別がつかずに苦労していると思います。
+	
+	Unityの基本ライブラリは
+		using UnityEngine;
+	と書かれておりますように、UnityEngin名前空間にあるクラス群です。
+	どのようなクラスがあるかというと
+		http://docs-jp.unity3d.com/Documentation/ScriptReference/
+	の左側にある
+		Runtime Classes
+			Attributes
+			Enumerations
+		Editor Classes
+			Attributes
+			Enumerations
+	をクリックすると出てきます（数が多いので省略します）
+	
+	しかし、いっぺんに全部覚える必要はありません。
+	まずはMonoBehaviourとGameObjectとComponentの使い方を通じて徐々に覚えてください。
+	・MonoBehaviour
+		http://docs-jp.unity3d.com/Documentation/ScriptReference/MonoBehaviour.html
+	・GameObject
+		http://docs-jp.unity3d.com/Documentation/ScriptReference/GameObject.html
+	・Component
+		http://docs-jp.unity3d.com/Documentation/ScriptReference/Component.html
+
+	ちなみに、
+		using System.Collections;
+	は標準的なC#のコレクションフレームワークを指定しています。
+
+	何かの参考になればと思います。
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問６
+	白青本と紫本の違いについて。
+
+回答
+	白青本：簡単なゲームの作成を通じてUnityが
+			提供するコンポーネントの基本的な
+			使い方を学ぶ
+	紫本　：Unityのポテンシャルを引き出すために、
+			スクリプトによる制御を中心に様々な
+			コンポーネントやライブラリの応用的
+			な利用方法と「ゲームにおけるアルゴ
+			リズム」の基本を習得する
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+質問７
+	オブジェクト間のデータの受け渡しについて
+	教えてください。
+
+回答
+	具体的にどのようなことをやりたくて、どのように失敗したのかが分からないので
+	外しているかもしれませんが、講義の中でいくつか提供しています。
+	
+		１．今回の「質問２」を参照
+		２．ゲーム全体で利用する共通データ領域を作成して利用する
+		　　紫本の「第４章」のプロジェクトを開き、StageAdapterクラスを開く
+		　　Awakeメソッドで使われているDontDestroyOnLoad()を呼び出すことで
+		　　対象のオブジェクトを別のシーンに切り替わっても破棄しなくなります。
+		    void Awake()
+		    {
+		        // LoadLevelでDestory対象からはずす
+		        // Destoryの判断はSceneSelectorが行う
+		        DontDestroyOnLoad(gameObject);
+		    }
+    	３．PlayerPrefを利用する
+		　　http://docs-jp.unity3d.com/Documentation/ScriptReference/PlayerPrefs.html
+
