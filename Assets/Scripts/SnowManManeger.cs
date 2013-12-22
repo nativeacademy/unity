@@ -3,8 +3,8 @@ using System.Collections;
 
 public class SnowManManeger : MonoBehaviour {
 	
-	//[SerializeField]
-	//private GameObject _brokenParticle;
+	[SerializeField]
+	private GameObject _brokenParticle;
 	
 	
 	private ScoreManeger _scoreManeger;
@@ -23,7 +23,9 @@ public class SnowManManeger : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter (Collision collisionInfo) {
-		//Instantiate(_brokenParticle, transform.position, _brokenParticle.transform.rotation);
+		Instantiate(_brokenParticle, transform.position, _brokenParticle.transform.rotation);
+		//Instantiate(Detonator-Base, transform.position, _brokenParticle.transform.rotation);
+		
 		
 		// test
 		_scoreManeger.AddScore(10);
