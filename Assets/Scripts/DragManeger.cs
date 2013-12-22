@@ -13,9 +13,12 @@ public class DragManeger : MonoBehaviour {
 	private GameObject _draggableUI;
 	[SerializeField]
 	private GameObject _stage;
+	[SerializeField]
+	private GameObject _avatar;
 	
 	private CountManeger _countManeger;
 	private StageManeger _stageManeger;
+	private AnimController _animController;
 	private Vector3 _draggableUIPos;
 	private Vector3 _fulcrumPos;
 	private LineRenderer _lineRenderer;
@@ -31,6 +34,7 @@ public class DragManeger : MonoBehaviour {
 	void Start () {
 		_stageManeger = _stage.GetComponent<StageManeger> ();
 		_countManeger = GetComponentInChildren<CountManeger>();
+		_animController = _avatar.GetComponent<AnimController> ();
 		_lineRenderer = _line.GetComponent<LineRenderer>();
 		_fulcrumPos = _fulcrum.transform.position;
 	}
@@ -72,6 +76,14 @@ public class DragManeger : MonoBehaviour {
 	private void OnThrow() {
 		_lineRenderer.enabled = false;
 		_isMouseDown = false;
+	}
+
+	public void ThrowAnim(bool enable) {
+		if (enable) {
+			_animController.StartThrow ();
+		} else {
+			_animController.EndThrow ();
+		}
 	}
 	
 	private void OnDrag() {

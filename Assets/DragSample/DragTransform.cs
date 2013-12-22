@@ -71,8 +71,12 @@ public class DragTransform : MonoBehaviour {
         
         //main.gameObject.SendMessage("OnThrow");
 		Vector3 direction = _fulcrum.transform.position - transform.position;
+		_dragManeger.ThrowAnim (true);
+		yield return new WaitForSeconds (0.8f);
 		_dragManeger.CreateBall();
 		_dragManeger.GetBall().rigidbody.AddForce(direction * 10, ForceMode.Impulse);
+		yield return new WaitForSeconds (0.3f);
+		_dragManeger.ThrowAnim (false);
 		
 		//_dragManeger.OnThrow();
 		_dragManeger.IsRelease = true;

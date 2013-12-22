@@ -5,7 +5,10 @@ using Holoville.HOTween;
 public class StageManeger : MonoBehaviour {
 	[SerializeField]
 	private GameObject _count;
+	[SerializeField]
+	private GameObject _avatar;
 
+	private AnimController _animController;
 	private bool _isStageClear;
 	public bool IsStageClear {
 		get {return _isStageClear; }
@@ -15,6 +18,7 @@ public class StageManeger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		_animController = _avatar.GetComponent<AnimController> ();
 		_countManeger = _count.GetComponent<CountManeger> ();
 		CreateStage ();
 	}
@@ -27,6 +31,7 @@ public class StageManeger : MonoBehaviour {
 	public void StageEndCheck() {
 		if (GetComponentsInChildren<SnowManManeger>().Length == 1) {
 			_isStageClear = true;
+			_animController.StartRun ();
 			HOTween.To(_stage.transform, 3, new TweenParms()
 				.Prop("localPosition", new Vector3(-50f, _stage.transform.localPosition.y, 0))
 				.Ease(EaseType.EaseInOutQuad)
@@ -49,6 +54,9 @@ public class StageManeger : MonoBehaviour {
 		HOTween.To(_stage.transform, 3, new TweenParms()
 			.Prop("localPosition", new Vector3(0f, _stage.transform.localPosition.y, 0))
 			.Ease(EaseType.EaseInOutQuad)
+			.OnComplete(() => {
+				_animController.EndRun();
+			})
 		);
 
 	}
