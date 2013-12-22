@@ -37,6 +37,48 @@ public class DragTransform : MonoBehaviour {
 		StartCoroutine("Drag");
 	}
 	
+	
+	IEnumerator Drag(){
+        Vector3 screenSpace = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
+        
+        Vector3 offset = transform.position - Camera.main.ScreenToWorldPoint(mousePos);
+        //nowMouseDown = true;
+        
+        Debug.Log ("mouse down");
+        while (Input.GetMouseButton(0))
+        {
+                Debug.Log ("now dragging");
+                screenSpace = Camera.main.WorldToScreenPoint(transform.position);
+                var curScreenMouse = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
+                
+                var limit = 5;
+                var worldMousePos = Camera.main.ScreenToWorldPoint(curScreenMouse);
+                var distance = worldMousePos - _fulcrum.transform.position;
+                
+                Vector3 curPosition;
+                if(distance.magnitude >= limit){
+                        Vector3 temp = _fulcrum.transform.position + distance.normalized * limit;
+                        curPosition = temp;
+                }else{
+                        curPosition = worldMousePos + offset;
+                }
+                
+                transform.position = curPosition;
+                yield return null;
+        }
+        Debug.Log ("mouse up");
+        
+        //main.gameObject.SendMessage("OnThrow");
+		Vector3 direction = _fulcrum.transform.position - transform.position;
+		_dragManeger.CreateBall();
+		_dragManeger.GetBall().rigidbody.AddForce(direction * 10, ForceMode.Impulse);
+		
+		//_dragManeger.OnThrow();
+		_dragManeger.IsRelease = true;
+	}
+	
+	/*
 	IEnumerator Drag(){
 		Vector3 screenSpace = Camera.main.WorldToScreenPoint(transform.position);
 		Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenSpace.z);
@@ -64,4 +106,5 @@ public class DragTransform : MonoBehaviour {
 		//_dragManeger.OnThrow();
 		_dragManeger.IsRelease = true;
 	}
+	*/
 }
