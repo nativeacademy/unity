@@ -3,12 +3,16 @@ using System.Collections;
 using Holoville.HOTween;
 
 public class StageManeger : MonoBehaviour {
-	
+	[SerializeField]
+	private GameObject _count;
+
 	private bool _isStageEnd;
 	private GameObject _stage;
+	private CountManeger _countManeger;
 
 	// Use this for initialization
 	void Start () {
+		_countManeger = _count.GetComponent<CountManeger> ();
 		CreateStage ();
 	}
 	
@@ -21,8 +25,12 @@ public class StageManeger : MonoBehaviour {
 		if (GetComponentsInChildren<SnowManManeger>().Length == 1) {
 			_isStageEnd = true;
 			HOTween.To(_stage.transform, 3, new TweenParms()
-				.Prop("Position", new Vector3(0, 6, 0))
+				.Prop("localPosition", new Vector3(-50f, _stage.transform.localPosition.y, 0))
 				.Ease(EaseType.EaseInOutQuad)
+				.OnComplete(() => {
+					Destroy(_stage);
+					CreateStage();
+				})
 			);
 			Debug.Log("##### END");
 		} else {
@@ -32,7 +40,13 @@ public class StageManeger : MonoBehaviour {
 	}
 
 	private void CreateStage() {
-		_stage = (GameObject)Instantiate (Resources.Load("Prefabs/Stage/TestStage1"), new Vector3(15f, 3.5f, 0f), Quaternion.identity);
+		_countManeger.InitCount ();
+		_stage = (GameObject)Instantiate (Resources.Load("Prefabs/Stage/TestStage1"), new Vector3(30f, 3.5f, 0f), Quaternion.identity);
 		_stage.transform.parent = transform;
+		HOTween.To(_stage.transform, 3, new TweenParms()
+			.Prop("localPosition", new Vector3(0f, _stage.transform.localPosition.y, 0))
+			.Ease(EaseType.EaseInOutQuad)
+		);
+
 	}
 }

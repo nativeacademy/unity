@@ -29,5 +29,6 @@ public class CountManeger : MonoBehaviour {
 	
 	public void InitCount() {
 		_count = _countMax;
+		guiText.text = "Ball : " + _count + " / " + _countMax;
 	}
 }
