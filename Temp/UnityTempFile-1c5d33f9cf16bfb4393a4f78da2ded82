@@ -1,0 +1,78 @@
+-debug
+-target:library
+-nowarn:0169
+-out:Temp/Assembly-CSharp-Editor.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
+-r:Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll
+-r:Library/ScriptAssemblies/Assembly-CSharp.dll
+-r:Library/ScriptAssemblies/Assembly-UnityScript.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/iPhonePlayer/EditorExtensions/UnityEditor.iOS.Extensions.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/WP8Support/EditorExtensions/UnityEditor.WP8.Extensions.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/MetroSupport/EditorExtensions/UnityEditor.Metro.Extensions.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/BB10Player/EditorExtensions/UnityEditor.BB10.Extensions.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/EditorExtensions/UnityEditor.Android.Extensions.dll"
+-r:Assets/HOTween/Plugins/HOTween.dll
+-r:Assets/HOTween/Plugins/Editor/HOTweenV1_Editor.dll
+-define:UNITY_STANDALONE_OSX
+-define:ENABLE_MICROPHONE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_AUDIO_FMOD
+-define:UNITY_STANDALONE
+-define:ENABLE_MONO
+-define:ENABLE_TERRAIN
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_GENERICS
+-define:ENABLE_MOVIES
+-define:ENABLE_WWW
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_WEBCAM
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_NETWORK
+-define:ENABLE_PHYSICS
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_GAMECENTER
+-define:ENABLE_SHADOWS
+-define:ENABLE_AUDIO
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:UNITY_4_2_2
+-define:UNITY_4_2
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_WIN
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/Config/Config.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/Config/ConfigWindow.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/ExpressionManagerEditor.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/Inspector/InspectorBase.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/Inspector/PMDInspector.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/Inspector/PMDScriptableObject.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/Inspector/ScriptableObjectBase.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/Inspector/VMDInspector.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/Inspector/VMDScriptableObject.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDEngineEditor.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/LoadedWindow.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/PMDLoaderWindow.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/AvatarSettingScript.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/ComputeSkin.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/MMDConverter.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/MMDFormat.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/MMDMathf.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/ModelAgent.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/MotionAgent.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/PMDLoaderScript.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/PMXConverter.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/PMXLoaderScript.PMX2PMD.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/PMXLoaderScript.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/Private/VMDLoaderScript.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MMDLoader/VMDLoaderWindow.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/MorphManagerEditor.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/PhysicsManagerEditor.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/XFileImporter/Private/XFileConverter.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/XFileImporter/Private/XFileFormat.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/XFileImporter/Private/XFileImporter.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Editor/XFileImporter/XFileImporterWindow.cs
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/2.0\System.Runtime.Serialization.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/2.0\System.Xml.Linq.dll"

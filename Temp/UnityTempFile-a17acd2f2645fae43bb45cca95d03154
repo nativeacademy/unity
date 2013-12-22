@@ -1,0 +1,64 @@
+-debug
+-target:library
+-nowarn:0169
+-out:Temp/Assembly-CSharp.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll
+-r:Assets/HOTween/Plugins/HOTween.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
+-define:UNITY_STANDALONE_OSX
+-define:ENABLE_MICROPHONE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_AUDIO_FMOD
+-define:UNITY_STANDALONE
+-define:ENABLE_MONO
+-define:ENABLE_TERRAIN
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_GENERICS
+-define:ENABLE_MOVIES
+-define:ENABLE_WWW
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_WEBCAM
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_NETWORK
+-define:ENABLE_PHYSICS
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_GAMECENTER
+-define:ENABLE_SHADOWS
+-define:ENABLE_AUDIO
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:UNITY_4_2_2
+-define:UNITY_4_2
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_WIN
+Assets/DragSample/DragTransform.cs
+Assets/DragSample/Main.cs
+Assets/HOTween/_Demo/HOTweenDemoBrain.cs
+"Assets/Locomotion Setup/Locomotion/Scripts/Locomotion.cs"
+"Assets/Locomotion Setup/Scripts/JoystickToEvents.cs"
+"Assets/Locomotion Setup/Scripts/LocomotionPlayer.cs"
+Assets/Scripts/BallManeger.cs
+Assets/Scripts/CountManeger.cs
+Assets/Scripts/DragManeger.cs
+Assets/Scripts/ItemManeger.cs
+Assets/Scripts/ScoreManeger.cs
+Assets/Scripts/SnowManManeger.cs
+Assets/Scripts/StageManeger.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/ExpressionManagerScript.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/IK/BoneController.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/IK/CCDIKSolver.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/MMDEngine.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/MMDSkinsScript.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/Morph/BoneMorph.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/Morph/GroupMorph.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/Morph/MaterialMorph.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/Morph/MorphBase.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/Morph/MorphManager.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/Morph/UvMorph.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/Morph/VertexMorph.cs
+Assets/mmd-for-unity-proj-mmd-for-unity-d944c94/Resources/PhysicsManager.cs
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"
