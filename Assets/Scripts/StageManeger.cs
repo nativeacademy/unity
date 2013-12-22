@@ -49,7 +49,10 @@ public class StageManeger : MonoBehaviour {
 
 	private void CreateStage() {
 		_countManeger.InitCount ();
-		_stage = (GameObject)Instantiate (Resources.Load("Prefabs/Stage/TestStage1"), new Vector3(30f, 3.5f, 0f), Quaternion.identity);
+		System.Random r = new System.Random ();
+		int num = r.Next(3);
+		Debug.Log ("##### stage : " + num);
+		_stage = (GameObject)Instantiate (Resources.Load("Prefabs/Stage/TestStage" + num), new Vector3(30f, 3.5f, 0f), Quaternion.identity);
 		_stage.transform.parent = transform;
 		HOTween.To(_stage.transform, 3, new TweenParms()
 			.Prop("localPosition", new Vector3(0f, _stage.transform.localPosition.y, 0))
