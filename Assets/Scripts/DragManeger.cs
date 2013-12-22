@@ -11,8 +11,11 @@ public class DragManeger : MonoBehaviour {
 	private GameObject _line;
 	[SerializeField]
 	private GameObject _draggableUI;
+	[SerializeField]
+	private GameObject _stage;
 	
 	private CountManeger _countManeger;
+	private StageManeger _stageManeger;
 	private Vector3 _draggableUIPos;
 	private Vector3 _fulcrumPos;
 	private LineRenderer _lineRenderer;
@@ -26,6 +29,7 @@ public class DragManeger : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		_stageManeger = _stage.GetComponent<StageManeger> ();
 		_countManeger = GetComponentInChildren<CountManeger>();
 		_lineRenderer = _line.GetComponent<LineRenderer>();
 		_fulcrumPos = _fulcrum.transform.position;
@@ -41,7 +45,16 @@ public class DragManeger : MonoBehaviour {
 		} else {
 			if (_isCreated) {
 				if (_isEnd) {
-					// game over
+					if (_stageManeger.IsStageClear) {
+						// next stage
+						_draggableUI.SetActive(true);
+						_draggableUI.transform.localPosition = _fulcrumPos;
+						_isCreated = false;
+						IsRelease = false;
+					} else {
+						// game over
+					}
+ 					
 					
 					
 				} else {

@@ -6,7 +6,10 @@ public class StageManeger : MonoBehaviour {
 	[SerializeField]
 	private GameObject _count;
 
-	private bool _isStageEnd;
+	private bool _isStageClear;
+	public bool IsStageClear {
+		get {return _isStageClear; }
+	}
 	private GameObject _stage;
 	private CountManeger _countManeger;
 
@@ -23,7 +26,7 @@ public class StageManeger : MonoBehaviour {
 	
 	public void StageEndCheck() {
 		if (GetComponentsInChildren<SnowManManeger>().Length == 1) {
-			_isStageEnd = true;
+			_isStageClear = true;
 			HOTween.To(_stage.transform, 3, new TweenParms()
 				.Prop("localPosition", new Vector3(-50f, _stage.transform.localPosition.y, 0))
 				.Ease(EaseType.EaseInOutQuad)
@@ -34,7 +37,7 @@ public class StageManeger : MonoBehaviour {
 			);
 			Debug.Log("##### END");
 		} else {
-			_isStageEnd = false;
+			_isStageClear = false;
 			Debug.Log("##### not END");
 		}
 	}
